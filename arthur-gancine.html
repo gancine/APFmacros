@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Ferramentas</title>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+
+      --bg: light-dark(#eadcc8, #3a2418);
+      --surface: light-dark(#fffaf2, #4a3022);
+      --text: light-dark(#4b2e20, #fff8ef);
+      --muted: light-dark(#806957, #d9c2ac);
+      --border: light-dark(#cdb69e, #6b4b38);
+
+      --button: light-dark(#6b3f28, #8b5a3c);
+      --button-text: #fffaf2;
+      --button-hover: light-dark(#4f2d1d, #a56f4d);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    #app {
+      width: 100%;
+      height: 100dvh;
+      min-height: 100vh;
+      overflow: hidden;
+
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      background-color: var(--bg);
+
+      padding: clamp(18px, 4vh, 42px) 18px 12px;
+    }
+
+    .container {
+      width: min(92vw, 520px);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 22px;
+      max-height: 100%;
+    }
+
+    /* ÁREA DA IMAGEM */
+
+    .logo-area {
+      width: clamp(100px, 18vw, 150px);
+      height: clamp(100px, 18vw, 150px);
+
+      border: 2px dashed var(--border);
+      border-radius: 18px;
+
+      background: var(--surface);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+    .logo-area img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      display: none;
+    }
+
+    .logo-placeholder {
+      text-align: center;
+
+      padding: 15px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    /* BOTÕES */
+
+    .buttons {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 13px;
+    }
+
+    .tool-button {
+      width: 100%;
+      min-height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 15px 22px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: var(--button);
+      color: var(--button-text);
+
+      text-decoration: none;
+
+      font-size: 17px;
+      font-weight: 700;
+
+      letter-spacing: 0.1px;
+
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .tool-button:hover {
+      background: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    .tool-button:active {
+      transform: translateY(0);
+    }
+
+    /* EM BREVE */
+
+    .soon {
+      cursor: default;
+      opacity: 0.72;
+    }
+
+    .soon:hover {
+      transform: none;
+    }
+
+    /* FOOTER */
+
+    footer {
+      width: 100%;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.45;
+
+      padding-top: 2px;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* TELAS PEQUENAS */
+
+    @media (max-height: 650px) {
+
+      .container {
+        gap: 12px;
+      }
+
+      .logo-area {
+        width: 105px;
+        height: 105px;
+      }
+
+      .buttons {
+        gap: 8px;
+      }
+
+      .tool-button {
+        min-height: 48px;
+        padding: 10px 18px;
+      }
+
+      footer {
+        font-size: 10px;
+      }
+    }
+
+    /* CELULARES */
+
+    @media (max-width: 420px) {
+
+      #app {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .container {
+        width: min(94vw, 520px);
+      }
+
+      .tool-button {
+        font-size: 15px;
+        min-height: 52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main id="app">
+
+    <section class="container" aria-label="Portal de ferramentas">
+
+      <!-- ÁREA PARA LOGOTIPO / IMAGEM -->
+
+      <div
+        class="logo-area"
+        aria-label="Área para imagem ou logotipo"
+      >
+
+        <!--
+          COLOQUE SUA IMAGEM AQUI.
+
+          Exemplo:
+
+          <img
+            id="logo"
+            src="logo.png"
+            alt="Logo"
+            style="display:block;"
+          >
+        -->
+
+        <img
+          id="logo"
+          src=""
+          alt="Logotipo"
+        >
+
+        <div
+          class="logo-placeholder"
+          id="placeholder"
+        >
+          COLOQUE SUA<br>
+          IMAGEM AQUI
+        </div>
+
+      </div>
+
+
+      <!-- BOTÕES -->
+
+      <nav
+        class="buttons"
+        aria-label="Ferramentas"
+      >
+
+        <!-- DR. CALC HELPER -->
+
+        <a
+          class="tool-button"
+          href="https://SEU-LINK-DR-CALC.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Dr. Calc Helper
+        </a>
+
+
+        <!-- CALCULADORA ITCMD SUL -->
+
+        <a
+          class="tool-button"
+          href="https://SEU-LINK-ITCMD.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Calculadora ITCMD Sul
+        </a>
+
+
+        <!-- ACORDO FÁCIL -->
+
+        <a
+          class="tool-button"
+          href="https://SEU-LINK-ACORDO-FACIL.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Acordo Fácil
+        </a>
+
+
+        <!-- EM BREVE -->
+
+        <a
+          class="tool-button soon"
+          href="#"
+          aria-disabled="true"
+          onclick="return false;"
+        >
+          Em breve
+        </a>
+
+      </nav>
+
+
+      <!-- FOOTER -->
+
+      <footer>
+
+        <div>
+          © 2026 Arthur Gancine.
+          Todos os direitos reservados.
+        </div>
+
+        <div>
+          Estudante de Direito ·
+          
+          IG:
+          <a
+            href="https://instagram.com/arthurgancine"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @arthurgancine
+          </a>
+
+          ·
+
+          <a
+            href="mailto:contatogancine@gmail.com"
+          >
+            contatogancine@gmail.com
+          </a>
+        </div>
+
+      </footer>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
